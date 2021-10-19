@@ -115,6 +115,8 @@ while running:
         # Makes the X button close the window
         if event.type == pygame.QUIT:
             running = False
+
+        #click events
         if event.type == pygame.MOUSEBUTTONUP:
             if aa.rect.collidepoint(pygame.mouse.get_pos()):
                 print("Mouse clicked on aa")
@@ -131,9 +133,48 @@ while running:
             if ac.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on ac')
                 if ac_s == '':
-                    AC.self = pygame.draw.rect(screen, (255, 0, 0),
-                                               pygame.Rect(220, 10, 100, 100))
+                    AC.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(220, 10, 100, 100))
                     ac_s = 'X'
+            
+            if ba.rect.collidepoint(pygame.mouse.get_pos()):
+                print('Mouse Clicked on ba')
+                if ba_s == '':
+                    BA.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(10, 115, 100, 100))
+                    ba_s = 'X'
+            
+            if bb.rect.collidepoint(pygame.mouse.get_pos()):
+                print('Mouse Clicked on bb')
+                if bb_s == '':
+                  BB.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(115, 115, 100, 100))
+                  bb_s = 'X'
+
+            if bc.rect.collidepoint(pygame.mouse.get_pos()):
+                print('Mouse Clicked on bc')
+                if bc_s == '':
+                  BC.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(220, 115, 100, 100))
+                  bc_s = 'X'
+            
+            if ca.rect.collidepoint(pygame.mouse.get_pos()):
+                print('Mouse Clicked on ca')
+                if ca_s == '':
+                  CA.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(10, 220, 100, 100))
+                  ca_s = 'X'
+
+            if cb.rect.collidepoint(pygame.mouse.get_pos()):
+                print('Mouse Clicked on cb')
+                if cb_s == '':
+                  CB.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(115, 220, 100, 100))
+                  cb_s = 'X'
+
+            if cc.rect.collidepoint(pygame.mouse.get_pos()):
+                print('Mouse Clicked on cc')
+                if cc_s == '':
+                  CC.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(220, 220, 100, 100))
+                  cc_s = 'X'
+                  
+    
+    
+
     # Updates
     pygame.display.update()
     if aa_s and ab_s and ac_s == 'X':
@@ -183,6 +224,8 @@ while running:
 
     if ac_s and bb_s and ca_s == 'O':
         win = False
+
+
 
     if win == True:
         print('won Red')
