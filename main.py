@@ -1,5 +1,6 @@
 import pygame
 from time import sleep
+import random
 
 pygame.init()
 
@@ -106,6 +107,8 @@ cb_s = ""
 cc_s = ""
 
 win = 'null'
+turn_done = False
+available_squares = ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc']
 
 running = True
 while running:
@@ -123,58 +126,93 @@ while running:
                 if aa_s == '':
                     AA.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(10, 10, 100, 100))
                     aa_s = 'X'
+                    turn_done = True
+                    available_squares.remove('aa')
 
             if ab.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on ab')
                 if ab_s == '':
                     AB.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(115, 10, 100, 100))
                     ab_s = 'X'
+                    turn_done = True
+                    available_squares.remove('ab')
 
             if ac.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on ac')
                 if ac_s == '':
                     AC.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(220, 10, 100, 100))
                     ac_s = 'X'
+                    turn_done = True
+                    available_squares.remove('ac')
             
             if ba.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on ba')
                 if ba_s == '':
                     BA.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(10, 115, 100, 100))
                     ba_s = 'X'
+                    turn_done = True
+                    available_squares.remove('ba')
             
             if bb.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on bb')
                 if bb_s == '':
                   BB.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(115, 115, 100, 100))
                   bb_s = 'X'
+                  turn_done = True
+                  available_squares.remove('bb')
 
             if bc.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on bc')
                 if bc_s == '':
                   BC.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(220, 115, 100, 100))
                   bc_s = 'X'
+                  turn_done = True
+                  available_squares.remove('bc')
             
             if ca.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on ca')
                 if ca_s == '':
                   CA.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(10, 220, 100, 100))
                   ca_s = 'X'
+                  turn_done = True
+                  available_squares.remove('ca')
 
             if cb.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on cb')
                 if cb_s == '':
                   CB.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(115, 220, 100, 100))
                   cb_s = 'X'
+                  turn_done = True
+                  available_squares.remove('cb')
 
             if cc.rect.collidepoint(pygame.mouse.get_pos()):
                 print('Mouse Clicked on cc')
                 if cc_s == '':
                   CC.self = pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(220, 220, 100, 100))
                   cc_s = 'X'
-                  
-    
-    
+                  turn_done = True
+                  available_squares.remove('cc')
 
+
+    if turn_done:
+      #computer time!!!!!!!!!!!
+      move = random.choice(available_squares)
+      if move == aa:
+        AA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 10, 100, 100))
+        aa_s = 'O'
+        available_squares.remove('aa')
+
+      if move == ab:
+        AB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 10, 100, 100))
+        ab_s = 'O'
+        available_squares.remove('ab')
+      if move == ac:
+      if move == ba:
+      if move == bb:
+      if move == bc:
+      if move == ca:
+      if move == cb:
+      if move == cc:
     # Updates
     pygame.display.update()
     if aa_s and ab_s and ac_s == 'X':
