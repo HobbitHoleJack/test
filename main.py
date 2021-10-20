@@ -17,56 +17,58 @@ clock = pygame.time.Clock()
 font = pygame.font.Font(None, 60)
 redwin = font.render("Red Won", True, (0, 0, 0,))
 bluewin = font.render('Blue Won', True, (0, 0, 0))
+cpturn_done = True
 
 
 def checkwin():
     win = 'null'
-    if aa_s and ab_s and ac_s == 'X':
+
+    if aa_s == 'X' and ab_s == 'X' and ac_s == 'X':
         win = 'red'
 
-    if ba_s and bb_s and bc_s == 'X':
+    if ba_s == 'X' and bb_s == 'X' and bc_s == 'X':
         win = 'red'
 
-    if ca_s and cb_s and cc_s == 'X':
+    if ca_s == 'X' and cb_s == 'X' and cc_s == 'X':
         win = 'red'
 
-    if aa_s and ba_s and ca_s == 'X':
+    if aa_s == 'X' and ba_s == 'X' and ca_s == 'X':
         win = 'red'
 
-    if ab_s and bb_s and bc_s == 'X':
+    if ab_s == 'X' and bb_s == 'X' and cb_s == 'X':
         win = 'red'
 
-    if ac_s and bc_s and cc_s == 'X':
+    if ac_s == 'X' and bc_s == 'X' and cc_s == 'X':
         win = 'red'
 
-    if aa_s and bb_s and cc_s == 'X':
+    if aa_s == 'X' and bb_s == 'X' and cc_s == 'X':
         win = 'red'
 
-    if ac_s and bb_s and ca_s == 'X':
+    if ac_s == 'X' and bb_s == 'X' and ca_s == 'X':
         win = 'red'
 
-    if aa_s and ab_s and ac_s == 'O':
+    if aa_s == 'O' and ab_s == 'O' and ac_s == 'O':
         win = 'blue'
 
-    if ba_s and bb_s and bc_s == 'O':
+    if ba_s == 'O' and bb_s == 'O' and bc_s == 'O':
         win = 'blue'
 
-    if ca_s and cb_s and cc_s == 'O':
+    if ca_s == 'O' and cb_s == 'O' and cc_s == 'O':
         win = 'blue'
 
-    if aa_s and ba_s and ca_s == 'O':
+    if aa_s == 'O' and ba_s == 'O' and ca_s == 'O':
         win = 'blue'
 
-    if ab_s and bb_s and bc_s == 'O':
+    if ab_s == 'O' and bb_s == 'O' and bc_s == 'O':
         win = 'blue'
 
-    if ac_s and bc_s and cc_s == 'O':
+    if ac_s == 'O' and bc_s == 'O' and cc_s == 'O':
         win = 'blue'
 
-    if aa_s and bb_s and cc_s == 'O':
+    if aa_s == 'O' and bb_s == 'O' and cc_s == 'O':
         win = 'blue'
 
-    if ac_s and bb_s and ca_s == 'O':
+    if ac_s == 'O' and bb_s == 'O' and ca_s == 'O':
         win = 'blue'
 
     if win == 'red':
@@ -190,6 +192,7 @@ while running:
 
         #click events
         if event.type == pygame.MOUSEBUTTONUP:
+          if cpturn_done:
             if aa.rect.collidepoint(pygame.mouse.get_pos()):
                 print("Mouse clicked on aa")
                 if aa_s == '':
@@ -323,6 +326,7 @@ while running:
         cc_s = 'O'
         available_squares.remove('cc')
         turn_done = False
+        cpturn_done = True
         pygame.display.update()
 
     # Updates
