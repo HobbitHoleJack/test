@@ -231,12 +231,17 @@ while running:
         print('won Red')
         screen.blit(redwin, (80, 150))
         pygame.display.update()
+        pygame.mixer.music.load("success-1-6297.mp3")
+        pygame.mixer.music.play()
         sleep(3)
         break
+
     if win == False:
         print('won Blue')
         screen.blit(bluewin, (80, 150))
         pygame.display.update()
+        pygame.mixer.music.load("success-1-6297.mp3")
+        pygame.mixer.music.play()
         sleep(3)
         break
     clock.tick(60)
