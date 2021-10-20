@@ -17,6 +17,7 @@ clock = pygame.time.Clock()
 font = pygame.font.Font(None, 60)
 redwin = font.render("Red Won", True, (0, 0, 0,))
 bluewin = font.render('Blue Won', True, (0, 0, 0))
+draw = font.render('Draw!', True, (0, 0, 0))
 cpturn_done = True
 
 
@@ -269,66 +270,74 @@ while running:
     if turn_done:
       #computer time!!!!!!!!!!!
       checkwin()
-      move = random.choice(available_squares)
-      if move == 'aa':
-        AA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 10, 100, 100))
-        aa_s = 'O'
-        available_squares.remove('aa')
-        turn_done = False
-        pygame.display.update()
+      if available_squares:
 
-      if move == 'ab':
-        AB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 10, 100, 100))
-        ab_s = 'O'
-        available_squares.remove('ab')
-        turn_done = False
-        pygame.display.update()
+        move = random.choice(available_squares)
+        if move == 'aa':
+          AA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 10, 100, 100))
+          aa_s = 'O'
+          available_squares.remove('aa')
+          turn_done = False
+          pygame.display.update()
 
-      if move == 'ac':
-        AC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 10, 100, 100))
-        ac_s = 'O'   
-        available_squares.remove('ac')
-        turn_done = False
-        pygame.display.update()
+        if move == 'ab':
+          AB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 10, 100, 100))
+          ab_s = 'O'
+          available_squares.remove('ab')
+          turn_done = False
+          pygame.display.update()
 
-      if move == 'ba':
-        BA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 115, 100, 100))
-        ba_s = 'O'
-        available_squares.remove('ba')
-        turn_done = False
-        pygame.display.update()
-      if move == 'bb':
-        BB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 115, 100, 100))
-        bb_s = 'O'
-        available_squares.remove('bb')
-        turn_done = False
-        pygame.display.update()
-      if move == 'bc':
-        BC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 115, 100, 100))
-        bc_s = 'O'
-        available_squares.remove('bc')
-        turn_done = False
-        pygame.display.update()
-      if move == 'ca':
-        CA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 220, 100, 100))
-        ca_s = 'O'
-        available_squares.remove('ca')
-        turn_done = False
-        pygame.display.update()
-      if move == 'cb':
-        CB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 220, 100, 100))
-        cb_s = 'O'
-        available_squares.remove('cb')
-        turn_done = False
-        pygame.display.update()
-      if move == 'cc':
-        CC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 220, 100, 100))
-        cc_s = 'O'
-        available_squares.remove('cc')
-        turn_done = False
-        cpturn_done = True
-        pygame.display.update()
+        if move == 'ac':
+          AC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 10, 100, 100))
+          ac_s = 'O'   
+          available_squares.remove('ac')
+          turn_done = False
+          pygame.display.update()
 
+        if move == 'ba':
+          BA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 115, 100, 100))
+          ba_s = 'O'
+          available_squares.remove('ba')
+          turn_done = False
+          pygame.display.update()
+        if move == 'bb':
+          BB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 115, 100, 100))
+          bb_s = 'O'
+          available_squares.remove('bb')
+          turn_done = False
+          pygame.display.update()
+        if move == 'bc':
+          BC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 115, 100, 100))
+          bc_s = 'O'
+          available_squares.remove('bc')
+          turn_done = False
+          pygame.display.update()
+        if move == 'ca':
+          CA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 220, 100, 100))
+          ca_s = 'O'
+          available_squares.remove('ca')
+          turn_done = False
+          pygame.display.update()
+        if move == 'cb':
+          CB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 220, 100, 100))
+          cb_s = 'O'
+          available_squares.remove('cb')
+          turn_done = False
+          pygame.display.update()
+        if move == 'cc':
+          CC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 220, 100, 100))
+          cc_s = 'O'
+          available_squares.remove('cc')
+          turn_done = False
+          cpturn_done = True
+          pygame.display.update()
+      else:
+        screen.blit(draw, (110, 150))
+        pygame.display.update()
+        pygame.mixer.music.load("success-1-6297.mp3")
+        pygame.mixer.music.play()
+        sleep(3)
+        exit()
     # Updates
     checkwin()
     pygame.display.update()
