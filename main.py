@@ -1,10 +1,12 @@
 import pygame
 from time import sleep
 import random
+from sys import exit
 
 pygame.init()
 
 # creates window
+running = True
 screen = pygame.display.set_mode((330, 330))
 pygame.display.set_caption("Tic Tac Toe")
 screen.fill((255, 255, 255))
@@ -15,6 +17,75 @@ clock = pygame.time.Clock()
 font = pygame.font.Font(None, 60)
 redwin = font.render("Red Won", True, (0, 0, 0,))
 bluewin = font.render('Blue Won', True, (0, 0, 0))
+
+
+def checkwin():
+    win = 'null'
+    if aa_s and ab_s and ac_s == 'X':
+        win = 'red'
+
+    if ba_s and bb_s and bc_s == 'X':
+        win = 'red'
+
+    if ca_s and cb_s and cc_s == 'X':
+        win = 'red'
+
+    if aa_s and ba_s and ca_s == 'X':
+        win = 'red'
+
+    if ab_s and bb_s and bc_s == 'X':
+        win = 'red'
+
+    if ac_s and bc_s and cc_s == 'X':
+        win = 'red'
+
+    if aa_s and bb_s and cc_s == 'X':
+        win = 'red'
+
+    if ac_s and bb_s and ca_s == 'X':
+        win = 'red'
+
+    if aa_s and ab_s and ac_s == 'O':
+        win = 'blue'
+
+    if ba_s and bb_s and bc_s == 'O':
+        win = 'blue'
+
+    if ca_s and cb_s and cc_s == 'O':
+        win = 'blue'
+
+    if aa_s and ba_s and ca_s == 'O':
+        win = 'blue'
+
+    if ab_s and bb_s and bc_s == 'O':
+        win = 'blue'
+
+    if ac_s and bc_s and cc_s == 'O':
+        win = 'blue'
+
+    if aa_s and bb_s and cc_s == 'O':
+        win = 'blue'
+
+    if ac_s and bb_s and ca_s == 'O':
+        win = 'blue'
+
+    if win == 'red':
+        print('won Red')
+        screen.blit(redwin, (80, 150))
+        pygame.display.update()
+        pygame.mixer.music.load("success-1-6297.mp3")
+        pygame.mixer.music.play()
+        sleep(3)
+        exit()
+    
+    if win == 'blue':
+        print('won Blue')
+        screen.blit(bluewin, (80, 150))
+        pygame.display.update()
+        pygame.mixer.music.load("success-1-6297.mp3")
+        pygame.mixer.music.play()
+        sleep(3)
+        exit()
 
 
 # gametime baby lesgo
@@ -106,11 +177,9 @@ ca_s = ""
 cb_s = ""
 cc_s = ""
 
-win = 'null'
 turn_done = False
 available_squares = ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc']
 
-running = True
 while running:
 
     for event in pygame.event.get():
@@ -196,90 +265,67 @@ while running:
 
     if turn_done:
       #computer time!!!!!!!!!!!
+      checkwin()
       move = random.choice(available_squares)
-      if move == aa:
+      if move == 'aa':
         AA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 10, 100, 100))
         aa_s = 'O'
         available_squares.remove('aa')
+        turn_done = False
+        pygame.display.update()
 
-      if move == ab:
+      if move == 'ab':
         AB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 10, 100, 100))
         ab_s = 'O'
         available_squares.remove('ab')
-      if move == ac:
-      if move == ba:
-      if move == bb:
-      if move == bc:
-      if move == ca:
-      if move == cb:
-      if move == cc:
+        turn_done = False
+        pygame.display.update()
+
+      if move == 'ac':
+        AC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 10, 100, 100))
+        ac_s = 'O'   
+        available_squares.remove('ac')
+        turn_done = False
+        pygame.display.update()
+
+      if move == 'ba':
+        BA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 115, 100, 100))
+        ba_s = 'O'
+        available_squares.remove('ba')
+        turn_done = False
+        pygame.display.update()
+      if move == 'bb':
+        BB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 115, 100, 100))
+        bb_s = 'O'
+        available_squares.remove('bb')
+        turn_done = False
+        pygame.display.update()
+      if move == 'bc':
+        BC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 115, 100, 100))
+        bc_s = 'O'
+        available_squares.remove('bc')
+        turn_done = False
+        pygame.display.update()
+      if move == 'ca':
+        CA.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(10, 220, 100, 100))
+        ca_s = 'O'
+        available_squares.remove('ca')
+        turn_done = False
+        pygame.display.update()
+      if move == 'cb':
+        CB.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(115, 220, 100, 100))
+        cb_s = 'O'
+        available_squares.remove('cb')
+        turn_done = False
+        pygame.display.update()
+      if move == 'cc':
+        CC.self = pygame.draw.rect(screen, (0, 0, 255), pygame.Rect(220, 220, 100, 100))
+        cc_s = 'O'
+        available_squares.remove('cc')
+        turn_done = False
+        pygame.display.update()
+
     # Updates
+    checkwin()
     pygame.display.update()
-    if aa_s and ab_s and ac_s == 'X':
-        win = True
-
-    if ba_s and bb_s and bc_s == 'X':
-        win = True
-
-    if ca_s and cb_s and cc_s == 'X':
-        win = True
-
-    if aa_s and ba_s and ca_s == 'X':
-        win = True
-
-    if ab_s and bb_s and bc_s == 'X':
-        win = True
-
-    if ac_s and bc_s and cc_s == 'X':
-        win = True
-
-    if aa_s and bb_s and cc_s == 'X':
-        win = True
-
-    if ac_s and bb_s and ca_s == 'X':
-        win = True
-
-    if aa_s and ab_s and ac_s == 'O':
-        win = False
-
-    if ba_s and bb_s and bc_s == 'O':
-        win = False
-
-    if ca_s and cb_s and cc_s == 'O':
-        win = False
-
-    if aa_s and ba_s and ca_s == 'O':
-        win = False
-
-    if ab_s and bb_s and bc_s == 'O':
-        win = False
-
-    if ac_s and bc_s and cc_s == 'O':
-        win = False
-
-    if aa_s and bb_s and cc_s == 'O':
-        win = False
-
-    if ac_s and bb_s and ca_s == 'O':
-        win = False
-
-
-
-    if win == True:
-        print('won Red')
-        screen.blit(redwin, (80, 150))
-        pygame.display.update()
-        pygame.mixer.music.load("success-1-6297.mp3")
-        pygame.mixer.music.play()
-        sleep(3)
-        break
-
-    if win == False:
-        print('won Blue')
-        screen.blit(bluewin, (80, 150))
-        pygame.display.update()
-        pygame.mixer.music.load("success-1-6297.mp3")
-        pygame.mixer.music.play()
-        sleep(3)
-        break
     clock.tick(60)
