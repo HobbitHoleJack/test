@@ -228,7 +228,7 @@ while 1 == 1:
                           available_squares.remove('cc')
 
       if turn_done:
-          #computer time!!!!!!!!!!!
+          #check win before move 
           win = 'null'
           
           if aa_s == 'X' and ab_s == 'X' and ac_s == 'X':
@@ -297,10 +297,49 @@ while 1 == 1:
             sleep(3)
             break
 
-
+#computer move
           if available_squares:
+              
+              #top row doubles
+              if aa_s == 'O' and ab_s == 'O' and ac_s == 'null':
+                move = 'ac'
+              
+              if aa_s == 'null' and ab_s == 'O' and ac_s == 'O':
+                move = 'aa'
+              
+              #middle row doubles
+              if ba_s == 'O' and bb_s == 'O' and bc_s == 'null':
+                move = 'bc'
 
-              move = random.choice(available_squares)
+              if ba_s == 'null' and bb_s == 'O' and bc_s == 'O':
+                move = 'ba'
+
+              #bottom row doubles
+              if ca_s == 'O' and cb_s == 'O' and cc_s == 'null':
+                move = 'cc'
+
+              if ca_s == 'null' and cb_s == 'O' and cc_s == 'O':
+                move = 'ca'
+
+              #left collumn doubles
+              if aa_s == 'O' and ba_s == 'O' and ca_s == 'null':
+                move = 'ca'
+
+              if aa_s == 'null' and ba_s == 'O' and ca_s == 'O':
+                move = 'aa'
+
+              #middle collumn doubles
+              if ab_s == 'O' and bb_s == 'O' and cb_s == 'null':
+                move = 'cb'
+
+              if ab_s == 'null' and bb_s == 'O' and cb_s == 'O':
+                move = 'ab'
+
+              #right collum doubles
+              if ac_s == 'O' and 
+
+              #diagonals (should be four of them)  
+
               if move == 'aa':
                   AA.self = pygame.draw.rect(screen, (0, 0, 255),
                                             pygame.Rect(10, 10, 100, 100))
