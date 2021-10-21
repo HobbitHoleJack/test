@@ -374,7 +374,7 @@ while 1 == 1:
               pygame.mixer.music.load("success-1-6297.mp3")
               pygame.mixer.music.play()
               sleep(3)
-              exit()
+              break
       # Updates
       win = 'null'
           
