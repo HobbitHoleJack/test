@@ -300,45 +300,63 @@ while 1 == 1:
 #computer move
           if available_squares:
               
+              move = random.choice(available_squares)
+              
               #top row doubles
-              if aa_s == 'O' and ab_s == 'O' and ac_s == 'null':
+              if aa_s == 'O' and ab_s == 'O' and 'ac' in available_squares:
                 move = 'ac'
               
-              if aa_s == 'null' and ab_s == 'O' and ac_s == 'O':
+              if 'aa' in available_squares and ab_s == 'O' and ac_s == 'O':
                 move = 'aa'
               
               #middle row doubles
-              if ba_s == 'O' and bb_s == 'O' and bc_s == 'null':
+              if ba_s == 'O' and bb_s == 'O' and 'bc' in available_squares:
                 move = 'bc'
 
-              if ba_s == 'null' and bb_s == 'O' and bc_s == 'O':
+              if 'ba' in available_squares and bb_s == 'O' and bc_s == 'O':
                 move = 'ba'
 
               #bottom row doubles
-              if ca_s == 'O' and cb_s == 'O' and cc_s == 'null':
+              if ca_s == 'O' and cb_s == 'O' and 'cc' in available_squares:
                 move = 'cc'
 
-              if ca_s == 'null' and cb_s == 'O' and cc_s == 'O':
+              if 'ca' in available_squares and cb_s == 'O' and cc_s == 'O':
                 move = 'ca'
 
               #left collumn doubles
-              if aa_s == 'O' and ba_s == 'O' and ca_s == 'null':
+              if aa_s == 'O' and ba_s == 'O' and 'ca' in available_squares:
                 move = 'ca'
 
-              if aa_s == 'null' and ba_s == 'O' and ca_s == 'O':
+              if 'aa' in available_squares and ba_s == 'O' and ca_s == 'O':
                 move = 'aa'
 
               #middle collumn doubles
-              if ab_s == 'O' and bb_s == 'O' and cb_s == 'null':
+              if ab_s == 'O' and bb_s == 'O' and 'cb' in available_squares:
                 move = 'cb'
 
-              if ab_s == 'null' and bb_s == 'O' and cb_s == 'O':
+              if 'ab' in available_squares and bb_s == 'O' and cb_s == 'O':
                 move = 'ab'
 
               #right collum doubles
-              if ac_s == 'O' and 
+              if ac_s == 'O' and bc_s == 'O' and 'cc' in available_squares:
+                move = 'cc'
+              
+              if cc_s == 'O' and bc_s == 'O' and 'ac' in available_squares:
+                move = ac
 
               #diagonals (should be four of them)  
+
+              if aa_s == "O" and bb_s == 'O' and 'cc' in available_squares:
+                move = 'cc'
+
+              if cc_s == 'O' and cb_s == 'O' and 'aa' in available_squares:
+                move = 'aa'
+
+              if ac_s == 'O' and bb_s == 'O' and 'ca' in available_squares:
+                move = 'ca'
+
+              if ca_s == 'O' and bb_s == 'O' and 'ac' in available_squares:
+                move = 'ac'
 
               if move == 'aa':
                   AA.self = pygame.draw.rect(screen, (0, 0, 255),
