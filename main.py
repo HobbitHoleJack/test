@@ -358,6 +358,63 @@ while 1 == 1:
               if ca_s == 'O' and bb_s == 'O' and 'ac' in available_squares:
                 move = 'ac'
 
+              #top row doubles
+
+              if aa_s == 'X' and ab_s == 'X' and 'ac' in available_squares:
+                move = 'ac'
+              
+              if 'aa' in available_squares and ab_s == 'X' and ac_s == 'X':
+                move = 'aa'
+              
+              #middle row doubles
+              if ba_s == 'X' and bb_s == 'X' and 'bc' in available_squares:
+                move = 'bc'
+
+              if 'ba' in available_squares and bb_s == 'X' and bc_s == 'X':
+                move = 'ba'
+
+              #bottom row doubles
+              if ca_s == 'X' and cb_s == 'X' and 'cc' in available_squares:
+                move = 'cc'
+
+              if 'ca' in available_squares and cb_s == 'X' and cc_s == 'X':
+                move = 'ca'
+
+              #left collumn doubles
+              if aa_s == 'X' and ba_s == 'X' and 'ca' in available_squares:
+                move = 'ca'
+
+              if 'aa' in available_squares and ba_s == 'X' and ca_s == 'X':
+                move = 'aa'
+
+              #middle collumn doubles
+              if ab_s == 'X' and bb_s == 'X' and 'cb' in available_squares:
+                move = 'cb'
+
+              if 'ab' in available_squares and bb_s == 'X' and cb_s == 'X':
+                move = 'ab'
+
+              #right collum doubles
+              if ac_s == 'X' and bc_s == 'X' and 'cc' in available_squares:
+                move = 'cc'
+              
+              if cc_s == 'X' and bc_s == 'X' and 'ac' in available_squares:
+                move = ac
+
+              #diagonals (should be four of them)  
+
+              if aa_s == "X" and bb_s == 'X' and 'cc' in available_squares:
+                move = 'cc'
+
+              if cc_s == 'X' and cb_s == 'X' and 'aa' in available_squares:
+                move = 'aa'
+
+              if ac_s == 'X' and bb_s == 'X' and 'ca' in available_squares:
+                move = 'ca'
+
+              if ca_s == 'X' and bb_s == 'X' and 'ac' in available_squares:
+                move = 'ac'
+
               if move == 'aa':
                   AA.self = pygame.draw.rect(screen, (0, 0, 255),
                                             pygame.Rect(10, 10, 100, 100))
