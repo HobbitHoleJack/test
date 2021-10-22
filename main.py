@@ -228,7 +228,7 @@ while 1 == 1:
                           available_squares.remove('cc')
 
       if turn_done:
-          #computer time!!!!!!!!!!!
+          #check win before move 
           win = 'null'
           
           if aa_s == 'X' and ab_s == 'X' and ac_s == 'X':
@@ -297,10 +297,179 @@ while 1 == 1:
             sleep(3)
             break
 
-
+#computer move
           if available_squares:
+              
+              
+              #top row doubles
+              if aa_s == 'O' and ab_s == 'O' and 'ac' in available_squares:
+                move = 'ac'
+              
+              elif 'aa' in available_squares and ab_s == 'O' and ac_s == 'O':
+                move = 'aa'
+              
+              #middle row doubles
+              elif ba_s == 'O' and bb_s == 'O' and 'bc' in available_squares:
+                move = 'bc'
 
-              move = random.choice(available_squares)
+              elif 'ba' in available_squares and bb_s == 'O' and bc_s == 'O':
+                move = 'ba'
+
+              #bottom row doubles
+              elif ca_s == 'O' and cb_s == 'O' and 'cc' in available_squares:
+                move = 'cc'
+
+              elif 'ca' in available_squares and cb_s == 'O' and cc_s == 'O':
+                move = 'ca'
+
+              #left collumn doubles
+              elif aa_s == 'O' and ba_s == 'O' and 'ca' in available_squares:
+                move = 'ca'
+
+              elif 'aa' in available_squares and ba_s == 'O' and ca_s == 'O':
+                move = 'aa'
+
+              #middle collumn doubles
+              elif ab_s == 'O' and bb_s == 'O' and 'cb' in available_squares:
+                move = 'cb'
+
+              elif 'ab' in available_squares and bb_s == 'O' and cb_s == 'O':
+                move = 'ab'
+
+              #right collum doubles
+              elif ac_s == 'O' and bc_s == 'O' and 'cc' in available_squares:
+                move = 'cc'
+              
+              elif cc_s == 'O' and bc_s == 'O' and 'ac' in available_squares:
+                move = 'ac'
+
+              #diagonals (should be four of them)  
+
+              elif aa_s == "O" and bb_s == 'O' and 'cc' in available_squares:
+                move = 'cc'
+
+              elif cc_s == 'O' and cb_s == 'O' and 'aa' in available_squares:
+                move = 'aa'
+
+              elif ac_s == 'O' and bb_s == 'O' and 'ca' in available_squares:
+                move = 'ca'
+
+              elif ca_s == 'O' and bb_s == 'O' and 'ac' in available_squares:
+                move = 'ac'
+
+              # doubles with spaces
+
+              elif aa_s == 'O' and cc_s == 'O' and 'bb' in available_squares:
+                move = 'bb'
+
+              elif ca_s == 'O' and ac_s == 'O' and 'bb' in available_squares:
+                move = 'bb'
+
+              elif aa_s == 'O' and ca_s == 'O' and 'ba' in available_squares:
+                move = 'ba'
+
+              elif ab_s == 'O' and cb_s == 'O' and 'bb' in available_squares:
+                move = 'bb'
+
+              elif ac_s == 'O' and cc_s == 'O' and 'cb' in available_squares:
+                move = 'cb'
+
+              elif aa_s == 'O' and ac_s == 'O' and 'ab' in available_squares:
+                move = 'ab'
+
+              elif ba_s == 'O' and bc_s == 'O' and 'bb' in available_squares:
+                move = 'bb'
+              
+              elif ca_s == 'O' and cc_s == 'O' and 'cb' in available_squares:
+                move = 'cb'
+
+
+              #top row doubles
+
+              elif aa_s == 'X' and ab_s == 'X' and 'ac' in available_squares:
+                move = 'ac'
+              
+              elif 'aa' in available_squares and ab_s == 'X' and ac_s == 'X':
+                move = 'aa'
+              
+              #middle row doubles
+              elif ba_s == 'X' and bb_s == 'X' and 'bc' in available_squares:
+                move = 'bc'
+
+              elif 'ba' in available_squares and bb_s == 'X' and bc_s == 'X':
+                move = 'ba'
+
+              #bottom row doubles
+              elif ca_s == 'X' and cb_s == 'X' and 'cc' in available_squares:
+                move = 'cc'
+
+              elif 'ca' in available_squares and cb_s == 'X' and cc_s == 'X':
+                move = 'ca'
+
+              #left collumn doubles
+              elif aa_s == 'X' and ba_s == 'X' and 'ca' in available_squares:
+                move = 'ca'
+
+              elif 'aa' in available_squares and ba_s == 'X' and ca_s == 'X':
+                move = 'aa'
+
+              #middle collumn doubles
+              elif ab_s == 'X' and bb_s == 'X' and 'cb' in available_squares:
+                move = 'cb'
+
+              elif 'ab' in available_squares and bb_s == 'X' and cb_s == 'X':
+                move = 'ab'
+
+              #right collum doubles
+              elif ac_s == 'X' and bc_s == 'X' and 'cc' in available_squares:
+                move = 'cc'
+              
+              elif cc_s == 'X' and bc_s == 'X' and 'ac' in available_squares:
+                move = 'ac'
+
+              #diagonals (should be four of them)  
+
+              elif aa_s == 'X' and bb_s == 'X' and 'cc' in available_squares:
+                move = 'cc'
+
+              elif cc_s == 'X' and bb_s == 'X' and 'aa' in available_squares:
+                move = 'aa'
+
+              elif ac_s == 'X' and bb_s == 'X' and 'ca' in available_squares:
+                move = 'ca'
+
+              elif ca_s == 'X' and bb_s == 'X' and 'ac' in available_squares:
+                move = 'ac'
+
+              # doubles with spaces
+
+              elif aa_s == 'X' and cc_s == 'X' and 'bb' in available_squares:
+                move = 'bb'
+
+              elif ca_s == 'X' and ac_s == 'X' and 'bb' in available_squares:
+                move = 'bb'
+
+              elif aa_s == 'X' and ca_s == 'X' and 'ba' in available_squares:
+                move = 'ba'
+
+              elif ab_s == 'X' and cb_s == 'X' and 'bb' in available_squares:
+                move = 'bb'
+
+              elif ac_s == 'X' and cc_s == 'X' and 'cb' in available_squares:
+                move = 'cb'
+
+              elif aa_s == 'X' and ac_s == 'X' and 'ab' in available_squares:
+                move = 'ab'
+
+              elif ba_s == 'X' and bc_s == 'X' and 'bb' in available_squares:
+                move = 'bb'
+              
+              elif ca_s == 'X' and cc_s == 'X' and 'cb' in available_squares:
+                move = 'cb'
+              
+              else:
+                move = random.choice(available_squares)
+
               if move == 'aa':
                   AA.self = pygame.draw.rect(screen, (0, 0, 255),
                                             pygame.Rect(10, 10, 100, 100))
