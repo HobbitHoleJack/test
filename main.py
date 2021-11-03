@@ -1,285 +1,593 @@
 while 1 == 1:
 
-  import pygame
-  from time import sleep
-  import random
-  pygame.init()
+    import pygame
+    from time import sleep
+    import random
+    pygame.init()
+
+    # creates window
+    running = True
+    screen = pygame.display.set_mode((330, 330))
+    pygame.display.set_caption("Tic Tac Toe")
+    screen.fill((255, 255, 255))
+    pygame.display.update()
+    icon = pygame.image.load('tictactoe.png')
+    pygame.display.set_icon(icon)
+    clock = pygame.time.Clock()
+    font = pygame.font.Font(None, 60)
+    redwin = font.render("Red Won", True, (
+        0,
+        0,
+        0,
+    ))
+    bluewin = font.render('Blue Won', True, (0, 0, 0))
+    draw = font.render('Draw!', True, (0, 0, 0))
+    cpturn_done = True
+
+    # gametime baby lesgo
+
+    # notes:
+    # Red = X, Blue = o
+
+
+    class AA:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(10, 10, 100, 100))
+
+    aa = AA()
+
+    class BA:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(10, 115, 100, 100))
+
+    ba = BA()
+
+    class CA:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(10, 220, 100, 100))
+
+    ca = CA()
+
+    class AB:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(115, 10, 100, 100))
+
+    ab = AB()
+
+    class BB:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(115, 115, 100, 100))
+
+    bb = BB()
+
+    class CB:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(115, 220, 100, 100))
+
+    cb = CB()
+
+    class AC:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(220, 10, 100, 100))
+
+    ac = AC()
+
+    class BC:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(220, 115, 100, 100))
+
+    bc = BC()
+
+    class CC:
+        def __init__(self):
+            self.rect = pygame.draw.rect(screen, (199, 195, 165),
+                                         pygame.Rect(220, 220, 100, 100))
+
+    cc = CC()
+
+    # status of square
+    aa_s = ""
+    ab_s = ""
+    ac_s = ""
+    ba_s = ""
+    bb_s = ""
+    bc_s = ""
+    ca_s = ""
+    cb_s = ""
+    cc_s = ""
+
+    turn_done = False
+    available_squares = ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc']
+
+    while running:
+
+        for event in pygame.event.get():
+
+            # Makes the X button close the window
+            if event.type == pygame.QUIT:
+                exit()
+                running = False
+
+            #click events
+            if event.type == pygame.MOUSEBUTTONUP:
+                if cpturn_done:
+                    if aa.rect.collidepoint(pygame.mouse.get_pos()):
+                        print("Mouse clicked on aa")
+                        if aa_s == '':
+                            AA.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(10, 10, 100, 100))
+                            aa_s = 'X'
+                            turn_done = True
+                            available_squares.remove('aa')
+
+                    if ab.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on ab')
+                        if ab_s == '':
+                            AB.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(115, 10, 100, 100))
+                            ab_s = 'X'
+                            turn_done = True
+                            available_squares.remove('ab')
+
+                    if ac.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on ac')
+                        if ac_s == '':
+                            AC.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(220, 10, 100, 100))
+                            ac_s = 'X'
+                            turn_done = True
+                            available_squares.remove('ac')
+
+                    if ba.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on ba')
+                        if ba_s == '':
+                            BA.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(10, 115, 100, 100))
+                            ba_s = 'X'
+                            turn_done = True
+                            available_squares.remove('ba')
+
+                    if bb.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on bb')
+                        if bb_s == '':
+                            BB.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(115, 115, 100, 100))
+                            bb_s = 'X'
+                            turn_done = True
+                            available_squares.remove('bb')
+
+                    if bc.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on bc')
+                        if bc_s == '':
+                            BC.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(220, 115, 100, 100))
+                            bc_s = 'X'
+                            turn_done = True
+                            available_squares.remove('bc')
+
+                    if ca.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on ca')
+                        if ca_s == '':
+                            CA.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(10, 220, 100, 100))
+                            ca_s = 'X'
+                            turn_done = True
+                            available_squares.remove('ca')
+
+                    if cb.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on cb')
+                        if cb_s == '':
+                            CB.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(115, 220, 100, 100))
+                            cb_s = 'X'
+                            turn_done = True
+                            available_squares.remove('cb')
+
+                    if cc.rect.collidepoint(pygame.mouse.get_pos()):
+                        print('Mouse Clicked on cc')
+                        if cc_s == '':
+                            CC.self = pygame.draw.rect(
+                                screen, (255, 0, 0),
+                                pygame.Rect(220, 220, 100, 100))
+                            cc_s = 'X'
+                            turn_done = True
+                            available_squares.remove('cc')
+
+        if turn_done:
+            #check win before move
+            win = 'null'
+
+            if aa_s == 'X' and ab_s == 'X' and ac_s == 'X':
+                win = 'red'
+
+            if ba_s == 'X' and bb_s == 'X' and bc_s == 'X':
+                win = 'red'
+
+            if ca_s == 'X' and cb_s == 'X' and cc_s == 'X':
+                win = 'red'
+
+            if aa_s == 'X' and ba_s == 'X' and ca_s == 'X':
+                win = 'red'
+
+            if ab_s == 'X' and bb_s == 'X' and cb_s == 'X':
+                win = 'red'
+
+            if ac_s == 'X' and bc_s == 'X' and cc_s == 'X':
+                win = 'red'
+
+            if aa_s == 'X' and bb_s == 'X' and cc_s == 'X':
+                win = 'red'
+
+            if ac_s == 'X' and bb_s == 'X' and ca_s == 'X':
+                win = 'red'
+
+            if aa_s == 'O' and ab_s == 'O' and ac_s == 'O':
+                win = 'blue'
+
+            if ba_s == 'O' and bb_s == 'O' and bc_s == 'O':
+                win = 'blue'
+
+            if ca_s == 'O' and cb_s == 'O' and cc_s == 'O':
+                win = 'blue'
+
+            if aa_s == 'O' and ba_s == 'O' and ca_s == 'O':
+                win = 'blue'
+
+            if ab_s == 'O' and bb_s == 'O' and cb_s == 'O':
+                win = 'blue'
+
+            if ac_s == 'O' and bc_s == 'O' and cc_s == 'O':
+                win = 'blue'
+
+            if aa_s == 'O' and bb_s == 'O' and cc_s == 'O':
+                win = 'blue'
+
+            if ac_s == 'O' and bb_s == 'O' and ca_s == 'O':
+                win = 'blue'
+
+            if win == 'red':
+                print('won Red')
+                screen.blit(redwin, (80, 150))
+                pygame.display.update()
+                pygame.mixer.music.load("success-1-6297.mp3")
+                pygame.mixer.music.play()
+                sleep(3)
+                break
+
+            if win == 'blue':
+                print('won Blue')
+                screen.blit(bluewin, (80, 150))
+                pygame.display.update()
+                pygame.mixer.music.load("success-1-6297.mp3")
+                pygame.mixer.music.play()
+                sleep(3)
+                break
+
+#computer move
+            if available_squares:
+
+                #top row doubles
+                if aa_s == 'O' and ab_s == 'O' and 'ac' in available_squares:
+                    move = 'ac'
+
+                elif 'aa' in available_squares and ab_s == 'O' and ac_s == 'O':
+                    move = 'aa'
+
+                #middle row doubles
+                elif ba_s == 'O' and bb_s == 'O' and 'bc' in available_squares:
+                    move = 'bc'
+
+                elif 'ba' in available_squares and bb_s == 'O' and bc_s == 'O':
+                    move = 'ba'
+
+                #bottom row doubles
+                elif ca_s == 'O' and cb_s == 'O' and 'cc' in available_squares:
+                    move = 'cc'
+
+                elif 'ca' in available_squares and cb_s == 'O' and cc_s == 'O':
+                    move = 'ca'
+
+                #left collumn doubles
+                elif aa_s == 'O' and ba_s == 'O' and 'ca' in available_squares:
+                    move = 'ca'
+
+                elif 'aa' in available_squares and ba_s == 'O' and ca_s == 'O':
+                    move = 'aa'
+
+                #middle collumn doubles
+                elif ab_s == 'O' and bb_s == 'O' and 'cb' in available_squares:
+                    move = 'cb'
+
+                elif 'ab' in available_squares and bb_s == 'O' and cb_s == 'O':
+                    move = 'ab'
+
+                #right collum doubles
+                elif ac_s == 'O' and bc_s == 'O' and 'cc' in available_squares:
+                    move = 'cc'
+
+                elif cc_s == 'O' and bc_s == 'O' and 'ac' in available_squares:
+                    move = 'ac'
+
+                #diagonals (should be four of them)
+
+                elif aa_s == "O" and bb_s == 'O' and 'cc' in available_squares:
+                    move = 'cc'
+
+                elif cc_s == 'O' and cb_s == 'O' and 'aa' in available_squares:
+                    move = 'aa'
+
+                elif ac_s == 'O' and bb_s == 'O' and 'ca' in available_squares:
+                    move = 'ca'
+
+                elif ca_s == 'O' and bb_s == 'O' and 'ac' in available_squares:
+                    move = 'ac'
+
+                # doubles with spaces
+
+                elif aa_s == 'O' and cc_s == 'O' and 'bb' in available_squares:
+                    move = 'bb'
+
+                elif ca_s == 'O' and ac_s == 'O' and 'bb' in available_squares:
+                    move = 'bb'
+
+                elif aa_s == 'O' and ca_s == 'O' and 'ba' in available_squares:
+                    move = 'ba'
 
-  # creates window
-  running = True
-  screen = pygame.display.set_mode((330, 330))
-  pygame.display.set_caption("Tic Tac Toe")
-  screen.fill((255, 255, 255))
-  pygame.display.update()
-  icon = pygame.image.load('tictactoe.png')
-  pygame.display.set_icon(icon)
-  clock = pygame.time.Clock()
-  font = pygame.font.Font(None, 60)
-  redwin = font.render("Red Won", True, (
-      0,
-      0,
-      0,
-  ))
-  bluewin = font.render('Blue Won', True, (0, 0, 0))
-  draw = font.render('Draw!', True, (0, 0, 0))
-  cpturn_done = True
+                elif ab_s == 'O' and cb_s == 'O' and 'bb' in available_squares:
+                    move = 'bb'
 
+                elif ac_s == 'O' and cc_s == 'O' and 'cb' in available_squares:
+                    move = 'cb'
 
-  # gametime baby lesgo
+                elif aa_s == 'O' and ac_s == 'O' and 'ab' in available_squares:
+                    move = 'ab'
 
-  # notes:
-  # Red = X, Blue = o
+                elif ba_s == 'O' and bc_s == 'O' and 'bb' in available_squares:
+                    move = 'bb'
 
+                elif ca_s == 'O' and cc_s == 'O' and 'cb' in available_squares:
+                    move = 'cb'
 
-  class AA:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(10, 10, 100, 100))
-
-
-  aa = AA()
-
-
-  class BA:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(10, 115, 100, 100))
-
-
-  ba = BA()
-
-
-  class CA:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(10, 220, 100, 100))
-
-
-  ca = CA()
-
-
-  class AB:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(115, 10, 100, 100))
-
-
-  ab = AB()
-
-
-  class BB:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(115, 115, 100, 100))
-
-
-  bb = BB()
-
-
-  class CB:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(115, 220, 100, 100))
-
-
-  cb = CB()
-
-
-  class AC:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(220, 10, 100, 100))
-
-
-  ac = AC()
-
-
-  class BC:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(220, 115, 100, 100))
-
-
-  bc = BC()
-
-
-  class CC:
-      def __init__(self):
-          self.rect = pygame.draw.rect(screen, (199, 195, 165),
-                                      pygame.Rect(220, 220, 100, 100))
-
-
-  cc = CC()
-
-  # status of square
-  aa_s = ""
-  ab_s = ""
-  ac_s = ""
-  ba_s = ""
-  bb_s = ""
-  bc_s = ""
-  ca_s = ""
-  cb_s = ""
-  cc_s = ""
-
-  turn_done = False
-  available_squares = ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc']
-
-  while running:
-
-      for event in pygame.event.get():
-
-          # Makes the X button close the window
-          if event.type == pygame.QUIT:
-              exit()
-              running = False
-              
-
-          #click events
-          if event.type == pygame.MOUSEBUTTONUP:
-              if cpturn_done:
-                  if aa.rect.collidepoint(pygame.mouse.get_pos()):
-                      print("Mouse clicked on aa")
-                      if aa_s == '':
-                          AA.self = pygame.draw.rect(
-                              screen, (255, 0, 0), pygame.Rect(10, 10, 100, 100))
-                          aa_s = 'X'
-                          turn_done = True
-                          available_squares.remove('aa')
-
-                  if ab.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on ab')
-                      if ab_s == '':
-                          AB.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(115, 10, 100, 100))
-                          ab_s = 'X'
-                          turn_done = True
-                          available_squares.remove('ab')
-
-                  if ac.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on ac')
-                      if ac_s == '':
-                          AC.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(220, 10, 100, 100))
-                          ac_s = 'X'
-                          turn_done = True
-                          available_squares.remove('ac')
-
-                  if ba.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on ba')
-                      if ba_s == '':
-                          BA.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(10, 115, 100, 100))
-                          ba_s = 'X'
-                          turn_done = True
-                          available_squares.remove('ba')
-
-                  if bb.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on bb')
-                      if bb_s == '':
-                          BB.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(115, 115, 100, 100))
-                          bb_s = 'X'
-                          turn_done = True
-                          available_squares.remove('bb')
-
-                  if bc.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on bc')
-                      if bc_s == '':
-                          BC.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(220, 115, 100, 100))
-                          bc_s = 'X'
-                          turn_done = True
-                          available_squares.remove('bc')
-
-                  if ca.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on ca')
-                      if ca_s == '':
-                          CA.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(10, 220, 100, 100))
-                          ca_s = 'X'
-                          turn_done = True
-                          available_squares.remove('ca')
-
-                  if cb.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on cb')
-                      if cb_s == '':
-                          CB.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(115, 220, 100, 100))
-                          cb_s = 'X'
-                          turn_done = True
-                          available_squares.remove('cb')
-
-                  if cc.rect.collidepoint(pygame.mouse.get_pos()):
-                      print('Mouse Clicked on cc')
-                      if cc_s == '':
-                          CC.self = pygame.draw.rect(
-                              screen, (255, 0, 0),
-                              pygame.Rect(220, 220, 100, 100))
-                          cc_s = 'X'
-                          turn_done = True
-                          available_squares.remove('cc')
-
-      if turn_done:
-          #check win before move 
-          win = 'null'
-          
-          if aa_s == 'X' and ab_s == 'X' and ac_s == 'X':
-              win = 'red'
-
-          if ba_s == 'X' and bb_s == 'X' and bc_s == 'X':
-              win = 'red'
-
-          if ca_s == 'X' and cb_s == 'X' and cc_s == 'X':
-              win = 'red'
-
-          if aa_s == 'X' and ba_s == 'X' and ca_s == 'X':
-              win = 'red'
-
-          if ab_s == 'X' and bb_s == 'X' and cb_s == 'X':
-              win = 'red'
-
-          if ac_s == 'X' and bc_s == 'X' and cc_s == 'X':
-              win = 'red'
-
-          if aa_s == 'X' and bb_s == 'X' and cc_s == 'X':
-              win = 'red'
-
-          if ac_s == 'X' and bb_s == 'X' and ca_s == 'X':
-              win = 'red'
-
-          if aa_s == 'O' and ab_s == 'O' and ac_s == 'O':
-              win = 'blue'
-
-          if ba_s == 'O' and bb_s == 'O' and bc_s == 'O':
-              win = 'blue'
-
-          if ca_s == 'O' and cb_s == 'O' and cc_s == 'O':
-              win = 'blue'
-
-          if aa_s == 'O' and ba_s == 'O' and ca_s == 'O':
-              win = 'blue'
-
-          if ab_s == 'O' and bb_s == 'O' and cb_s == 'O':
-              win = 'blue'
-
-          if ac_s == 'O' and bc_s == 'O' and cc_s == 'O':
-              win = 'blue'
-
-          if aa_s == 'O' and bb_s == 'O' and cc_s == 'O':
-              win = 'blue'
-
-          if ac_s == 'O' and bb_s == 'O' and ca_s == 'O':
-              win = 'blue'
-
-          if win == 'red':
+                #top row doubles
+
+                elif aa_s == 'X' and ab_s == 'X' and 'ac' in available_squares:
+                    move = 'ac'
+
+                elif 'aa' in available_squares and ab_s == 'X' and ac_s == 'X':
+                    move = 'aa'
+
+                #middle row doubles
+                elif ba_s == 'X' and bb_s == 'X' and 'bc' in available_squares:
+                    move = 'bc'
+
+                elif 'ba' in available_squares and bb_s == 'X' and bc_s == 'X':
+                    move = 'ba'
+
+                #bottom row doubles
+                elif ca_s == 'X' and cb_s == 'X' and 'cc' in available_squares:
+                    move = 'cc'
+
+                elif 'ca' in available_squares and cb_s == 'X' and cc_s == 'X':
+                    move = 'ca'
+
+                #left collumn doubles
+                elif aa_s == 'X' and ba_s == 'X' and 'ca' in available_squares:
+                    move = 'ca'
+
+                elif 'aa' in available_squares and ba_s == 'X' and ca_s == 'X':
+                    move = 'aa'
+
+                #middle collumn doubles
+                elif ab_s == 'X' and bb_s == 'X' and 'cb' in available_squares:
+                    move = 'cb'
+
+                elif 'ab' in available_squares and bb_s == 'X' and cb_s == 'X':
+                    move = 'ab'
+
+                #right collum doubles
+                elif ac_s == 'X' and bc_s == 'X' and 'cc' in available_squares:
+                    move = 'cc'
+
+                elif cc_s == 'X' and bc_s == 'X' and 'ac' in available_squares:
+                    move = 'ac'
+
+                #diagonals (should be four of them)
+
+                elif aa_s == 'X' and bb_s == 'X' and 'cc' in available_squares:
+                    move = 'cc'
+
+                elif cc_s == 'X' and bb_s == 'X' and 'aa' in available_squares:
+                    move = 'aa'
+
+                elif ac_s == 'X' and bb_s == 'X' and 'ca' in available_squares:
+                    move = 'ca'
+
+                elif ca_s == 'X' and bb_s == 'X' and 'ac' in available_squares:
+                    move = 'ac'
+
+                # doubles with spaces
+
+                elif aa_s == 'X' and cc_s == 'X' and 'bb' in available_squares:
+                    move = 'bb'
+
+                elif ca_s == 'X' and ac_s == 'X' and 'bb' in available_squares:
+                    move = 'bb'
+
+                elif aa_s == 'X' and ca_s == 'X' and 'ba' in available_squares:
+                    move = 'ba'
+
+                elif ab_s == 'X' and cb_s == 'X' and 'bb' in available_squares:
+                    move = 'bb'
+
+                elif ac_s == 'X' and cc_s == 'X' and 'cb' in available_squares:
+                    move = 'cb'
+
+                elif aa_s == 'X' and ac_s == 'X' and 'ab' in available_squares:
+                    move = 'ab'
+
+                elif ba_s == 'X' and bc_s == 'X' and 'bb' in available_squares:
+                    move = 'bb'
+
+                elif ca_s == 'X' and cc_s == 'X' and 'cb' in available_squares:
+                    move = 'cb'
+
+                #no doubles anywhere, pick a corner if there are any
+                elif 'aa' in available_squares:
+                    move = 'aa'
+
+                elif 'ac' in available_squares:
+                    move = 'ac'
+
+                elif 'ca' in available_squares:
+                    move = 'ca'
+
+                elif 'cc' in available_squares:
+                    move = 'cc'
+                else:
+                    move = random.choice(available_squares)
+
+                if move == 'aa':
+                    AA.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(10, 10, 100, 100))
+                    aa_s = 'O'
+                    available_squares.remove('aa')
+                    turn_done = False
+                    pygame.display.update()
+
+                if move == 'ab':
+                    AB.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(115, 10, 100, 100))
+                    ab_s = 'O'
+                    available_squares.remove('ab')
+                    turn_done = False
+                    pygame.display.update()
+
+                if move == 'ac':
+                    AC.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(220, 10, 100, 100))
+                    ac_s = 'O'
+                    available_squares.remove('ac')
+                    turn_done = False
+                    pygame.display.update()
+
+                if move == 'ba':
+                    BA.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(10, 115, 100, 100))
+                    ba_s = 'O'
+                    available_squares.remove('ba')
+                    turn_done = False
+                    pygame.display.update()
+                if move == 'bb':
+                    BB.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(115, 115, 100, 100))
+                    bb_s = 'O'
+                    available_squares.remove('bb')
+                    turn_done = False
+                    pygame.display.update()
+                if move == 'bc':
+                    BC.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(220, 115, 100, 100))
+                    bc_s = 'O'
+                    available_squares.remove('bc')
+                    turn_done = False
+                    pygame.display.update()
+                if move == 'ca':
+                    CA.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(10, 220, 100, 100))
+                    ca_s = 'O'
+                    available_squares.remove('ca')
+                    turn_done = False
+                    pygame.display.update()
+                if move == 'cb':
+                    CB.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(115, 220, 100, 100))
+                    cb_s = 'O'
+                    available_squares.remove('cb')
+                    turn_done = False
+                    pygame.display.update()
+                if move == 'cc':
+                    CC.self = pygame.draw.rect(screen, (0, 0, 255),
+                                               pygame.Rect(220, 220, 100, 100))
+                    cc_s = 'O'
+                    available_squares.remove('cc')
+                    turn_done = False
+                    cpturn_done = True
+                    pygame.display.update()
+            else:
+                screen.blit(draw, (110, 150))
+                pygame.display.update()
+                pygame.mixer.music.load("success-1-6297.mp3")
+                pygame.mixer.music.play()
+                sleep(3)
+                break
+        # Updates
+        win = 'null'
+
+        if aa_s == 'X' and ab_s == 'X' and ac_s == 'X':
+            win = 'red'
+
+        if ba_s == 'X' and bb_s == 'X' and bc_s == 'X':
+            win = 'red'
+
+        if ca_s == 'X' and cb_s == 'X' and cc_s == 'X':
+            win = 'red'
+
+        if aa_s == 'X' and ba_s == 'X' and ca_s == 'X':
+            win = 'red'
+
+        if ab_s == 'X' and bb_s == 'X' and cb_s == 'X':
+            win = 'red'
+
+        if ac_s == 'X' and bc_s == 'X' and cc_s == 'X':
+            win = 'red'
+
+        if aa_s == 'X' and bb_s == 'X' and cc_s == 'X':
+            win = 'red'
+
+        if ac_s == 'X' and bb_s == 'X' and ca_s == 'X':
+            win = 'red'
+
+        if aa_s == 'O' and ab_s == 'O' and ac_s == 'O':
+            win = 'blue'
+
+        if ba_s == 'O' and bb_s == 'O' and bc_s == 'O':
+            win = 'blue'
+
+        if ca_s == 'O' and cb_s == 'O' and cc_s == 'O':
+            win = 'blue'
+
+        if aa_s == 'O' and ba_s == 'O' and ca_s == 'O':
+            win = 'blue'
+
+        if ab_s == 'O' and bb_s == 'O' and cb_s == 'O':
+            win = 'blue'
+
+        if ac_s == 'O' and bc_s == 'O' and cc_s == 'O':
+            win = 'blue'
+
+        if aa_s == 'O' and bb_s == 'O' and cc_s == 'O':
+            win = 'blue'
+
+        if ac_s == 'O' and bb_s == 'O' and ca_s == 'O':
+            win = 'blue'
+
+        if win == 'red':
             print('won Red')
             screen.blit(redwin, (80, 150))
             pygame.display.update()
@@ -288,7 +596,7 @@ while 1 == 1:
             sleep(3)
             break
 
-          if win == 'blue':
+        if win == 'blue':
             print('won Blue')
             screen.blit(bluewin, (80, 150))
             pygame.display.update()
@@ -296,321 +604,5 @@ while 1 == 1:
             pygame.mixer.music.play()
             sleep(3)
             break
-
-#computer move
-          if available_squares:
-              
-              
-              #top row doubles
-              if aa_s == 'O' and ab_s == 'O' and 'ac' in available_squares:
-                move = 'ac'
-              
-              elif 'aa' in available_squares and ab_s == 'O' and ac_s == 'O':
-                move = 'aa'
-              
-              #middle row doubles
-              elif ba_s == 'O' and bb_s == 'O' and 'bc' in available_squares:
-                move = 'bc'
-
-              elif 'ba' in available_squares and bb_s == 'O' and bc_s == 'O':
-                move = 'ba'
-
-              #bottom row doubles
-              elif ca_s == 'O' and cb_s == 'O' and 'cc' in available_squares:
-                move = 'cc'
-
-              elif 'ca' in available_squares and cb_s == 'O' and cc_s == 'O':
-                move = 'ca'
-
-              #left collumn doubles
-              elif aa_s == 'O' and ba_s == 'O' and 'ca' in available_squares:
-                move = 'ca'
-
-              elif 'aa' in available_squares and ba_s == 'O' and ca_s == 'O':
-                move = 'aa'
-
-              #middle collumn doubles
-              elif ab_s == 'O' and bb_s == 'O' and 'cb' in available_squares:
-                move = 'cb'
-
-              elif 'ab' in available_squares and bb_s == 'O' and cb_s == 'O':
-                move = 'ab'
-
-              #right collum doubles
-              elif ac_s == 'O' and bc_s == 'O' and 'cc' in available_squares:
-                move = 'cc'
-              
-              elif cc_s == 'O' and bc_s == 'O' and 'ac' in available_squares:
-                move = 'ac'
-
-              #diagonals (should be four of them)  
-
-              elif aa_s == "O" and bb_s == 'O' and 'cc' in available_squares:
-                move = 'cc'
-
-              elif cc_s == 'O' and cb_s == 'O' and 'aa' in available_squares:
-                move = 'aa'
-
-              elif ac_s == 'O' and bb_s == 'O' and 'ca' in available_squares:
-                move = 'ca'
-
-              elif ca_s == 'O' and bb_s == 'O' and 'ac' in available_squares:
-                move = 'ac'
-
-              # doubles with spaces
-
-              elif aa_s == 'O' and cc_s == 'O' and 'bb' in available_squares:
-                move = 'bb'
-
-              elif ca_s == 'O' and ac_s == 'O' and 'bb' in available_squares:
-                move = 'bb'
-
-              elif aa_s == 'O' and ca_s == 'O' and 'ba' in available_squares:
-                move = 'ba'
-
-              elif ab_s == 'O' and cb_s == 'O' and 'bb' in available_squares:
-                move = 'bb'
-
-              elif ac_s == 'O' and cc_s == 'O' and 'cb' in available_squares:
-                move = 'cb'
-
-              elif aa_s == 'O' and ac_s == 'O' and 'ab' in available_squares:
-                move = 'ab'
-
-              elif ba_s == 'O' and bc_s == 'O' and 'bb' in available_squares:
-                move = 'bb'
-              
-              elif ca_s == 'O' and cc_s == 'O' and 'cb' in available_squares:
-                move = 'cb'
-
-
-              #top row doubles
-
-              elif aa_s == 'X' and ab_s == 'X' and 'ac' in available_squares:
-                move = 'ac'
-              
-              elif 'aa' in available_squares and ab_s == 'X' and ac_s == 'X':
-                move = 'aa'
-              
-              #middle row doubles
-              elif ba_s == 'X' and bb_s == 'X' and 'bc' in available_squares:
-                move = 'bc'
-
-              elif 'ba' in available_squares and bb_s == 'X' and bc_s == 'X':
-                move = 'ba'
-
-              #bottom row doubles
-              elif ca_s == 'X' and cb_s == 'X' and 'cc' in available_squares:
-                move = 'cc'
-
-              elif 'ca' in available_squares and cb_s == 'X' and cc_s == 'X':
-                move = 'ca'
-
-              #left collumn doubles
-              elif aa_s == 'X' and ba_s == 'X' and 'ca' in available_squares:
-                move = 'ca'
-
-              elif 'aa' in available_squares and ba_s == 'X' and ca_s == 'X':
-                move = 'aa'
-
-              #middle collumn doubles
-              elif ab_s == 'X' and bb_s == 'X' and 'cb' in available_squares:
-                move = 'cb'
-
-              elif 'ab' in available_squares and bb_s == 'X' and cb_s == 'X':
-                move = 'ab'
-
-              #right collum doubles
-              elif ac_s == 'X' and bc_s == 'X' and 'cc' in available_squares:
-                move = 'cc'
-              
-              elif cc_s == 'X' and bc_s == 'X' and 'ac' in available_squares:
-                move = 'ac'
-
-              #diagonals (should be four of them)  
-
-              elif aa_s == 'X' and bb_s == 'X' and 'cc' in available_squares:
-                move = 'cc'
-
-              elif cc_s == 'X' and bb_s == 'X' and 'aa' in available_squares:
-                move = 'aa'
-
-              elif ac_s == 'X' and bb_s == 'X' and 'ca' in available_squares:
-                move = 'ca'
-
-              elif ca_s == 'X' and bb_s == 'X' and 'ac' in available_squares:
-                move = 'ac'
-
-              # doubles with spaces
-
-              elif aa_s == 'X' and cc_s == 'X' and 'bb' in available_squares:
-                move = 'bb'
-
-              elif ca_s == 'X' and ac_s == 'X' and 'bb' in available_squares:
-                move = 'bb'
-
-              elif aa_s == 'X' and ca_s == 'X' and 'ba' in available_squares:
-                move = 'ba'
-
-              elif ab_s == 'X' and cb_s == 'X' and 'bb' in available_squares:
-                move = 'bb'
-
-              elif ac_s == 'X' and cc_s == 'X' and 'cb' in available_squares:
-                move = 'cb'
-
-              elif aa_s == 'X' and ac_s == 'X' and 'ab' in available_squares:
-                move = 'ab'
-
-              elif ba_s == 'X' and bc_s == 'X' and 'bb' in available_squares:
-                move = 'bb'
-              
-              elif ca_s == 'X' and cc_s == 'X' and 'cb' in available_squares:
-                move = 'cb'
-              
-              else:
-                move = random.choice(available_squares)
-
-              if move == 'aa':
-                  AA.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(10, 10, 100, 100))
-                  aa_s = 'O'
-                  available_squares.remove('aa')
-                  turn_done = False
-                  pygame.display.update()
-
-              if move == 'ab':
-                  AB.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(115, 10, 100, 100))
-                  ab_s = 'O'
-                  available_squares.remove('ab')
-                  turn_done = False
-                  pygame.display.update()
-
-              if move == 'ac':
-                  AC.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(220, 10, 100, 100))
-                  ac_s = 'O'
-                  available_squares.remove('ac')
-                  turn_done = False
-                  pygame.display.update()
-
-              if move == 'ba':
-                  BA.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(10, 115, 100, 100))
-                  ba_s = 'O'
-                  available_squares.remove('ba')
-                  turn_done = False
-                  pygame.display.update()
-              if move == 'bb':
-                  BB.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(115, 115, 100, 100))
-                  bb_s = 'O'
-                  available_squares.remove('bb')
-                  turn_done = False
-                  pygame.display.update()
-              if move == 'bc':
-                  BC.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(220, 115, 100, 100))
-                  bc_s = 'O'
-                  available_squares.remove('bc')
-                  turn_done = False
-                  pygame.display.update()
-              if move == 'ca':
-                  CA.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(10, 220, 100, 100))
-                  ca_s = 'O'
-                  available_squares.remove('ca')
-                  turn_done = False
-                  pygame.display.update()
-              if move == 'cb':
-                  CB.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(115, 220, 100, 100))
-                  cb_s = 'O'
-                  available_squares.remove('cb')
-                  turn_done = False
-                  pygame.display.update()
-              if move == 'cc':
-                  CC.self = pygame.draw.rect(screen, (0, 0, 255),
-                                            pygame.Rect(220, 220, 100, 100))
-                  cc_s = 'O'
-                  available_squares.remove('cc')
-                  turn_done = False
-                  cpturn_done = True
-                  pygame.display.update()
-          else:
-              screen.blit(draw, (110, 150))
-              pygame.display.update()
-              pygame.mixer.music.load("success-1-6297.mp3")
-              pygame.mixer.music.play()
-              sleep(3)
-              break
-      # Updates
-      win = 'null'
-          
-      if aa_s == 'X' and ab_s == 'X' and ac_s == 'X':
-          win = 'red'
-
-      if ba_s == 'X' and bb_s == 'X' and bc_s == 'X':
-          win = 'red'
-
-      if ca_s == 'X' and cb_s == 'X' and cc_s == 'X':
-          win = 'red'
-
-      if aa_s == 'X' and ba_s == 'X' and ca_s == 'X':
-          win = 'red'
-
-      if ab_s == 'X' and bb_s == 'X' and cb_s == 'X':
-          win = 'red'
-
-      if ac_s == 'X' and bc_s == 'X' and cc_s == 'X':
-          win = 'red'
-
-      if aa_s == 'X' and bb_s == 'X' and cc_s == 'X':
-          win = 'red'
-
-      if ac_s == 'X' and bb_s == 'X' and ca_s == 'X':
-          win = 'red'
-
-      if aa_s == 'O' and ab_s == 'O' and ac_s == 'O':
-          win = 'blue'
-
-      if ba_s == 'O' and bb_s == 'O' and bc_s == 'O':
-          win = 'blue'
-
-      if ca_s == 'O' and cb_s == 'O' and cc_s == 'O':
-          win = 'blue'
-
-      if aa_s == 'O' and ba_s == 'O' and ca_s == 'O':
-          win = 'blue'
-
-      if ab_s == 'O' and bb_s == 'O' and cb_s == 'O':
-          win = 'blue'
-
-      if ac_s == 'O' and bc_s == 'O' and cc_s == 'O':
-          win = 'blue'
-
-      if aa_s == 'O' and bb_s == 'O' and cc_s == 'O':
-          win = 'blue'
-
-      if ac_s == 'O' and bb_s == 'O' and ca_s == 'O':
-          win = 'blue'
-
-      if win == 'red':
-        print('won Red')
-        screen.blit(redwin, (80, 150))
         pygame.display.update()
-        pygame.mixer.music.load("success-1-6297.mp3")
-        pygame.mixer.music.play()
-        sleep(3)
-        break
-
-      if win == 'blue':
-        print('won Blue')
-        screen.blit(bluewin, (80, 150))
-        pygame.display.update()
-        pygame.mixer.music.load("success-1-6297.mp3")
-        pygame.mixer.music.play()
-        sleep(3)
-        break
-      pygame.display.update()
-      clock.tick(60)
+        clock.tick(60)
